@@ -1,0 +1,105 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: riskguard-postgres
+    environment:
+      POSTGRES_USER: ${DB_USER:-riskguard_user}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-RiskGuard2024!}
+      POSTGRES_DB: ${DB_NAME:-riskguard_db}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-riskguard_user}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - riskguard-network
+
+  # FastAPI Backend
+  backend:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.backend
+    container_name: riskguard-backend
+    environment:
+      DATABASE_URL: postgresql://${DB_USER:-riskguard_user}:${DB_PASSWORD:-RiskGuard2024!}@postgres:5432/${DB_NAME:-riskguard_db}
+      API_HOST: 0.0.0.0
+      API_PORT: 8000
+      ENVIRONMENT: ${ENVIRONMENT:-development}
+      DEBUG: ${DEBUG:-true}
+      SECRET_KEY: ${SECRET_KEY:-your-secret-key-change-in-production}
+      ENABLE_MONITORING: true
+    ports:
+      - "8000:8000"
+      - "8001:8001"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./backend:/app
+    networks:
+      - riskguard-network
+    command: python -m uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+
+  # React Frontend
+  frontend:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.frontend
+    container_name: riskguard-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    environment:
+      REACT_APP_API_URL: http://localhost:8000/api/v1
+    networks:
+      - riskguard-network
+
+  # Prometheus Monitoring
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: riskguard-prometheus
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    ports:
+      - "9090:9090"
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+    networks:
+      - riskguard-network
+
+  # Grafana
+  grafana:
+    image: grafana/grafana:latest
+    container_name: riskguard-grafana
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: admin
+      GF_SECURITY_ADMIN_USER: admin
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./monitoring/grafana_dashboards:/etc/grafana/provisioning/dashboards
+      - ./monitoring/grafana_datasources.yml:/etc/grafana/provisioning/datasources/datasources.yml
+    ports:
+      - "3001:3000"
+    depends_on:
+      - prometheus
+    networks:
+      - riskguard-network
+
+volumes:
+  postgres_data:
+  prometheus_data:
+  grafana_data:
+
+networks:
+  riskguard-network:
+    driver: bridge
