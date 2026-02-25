@@ -14,7 +14,7 @@
 
 ### projects
 - **id** (INT, PK): Project ID
-- **user_id** (INT, FK → users.id): Project owner
+- **user_id** (INT, FK ? users.id): Project owner
 - **name** (VARCHAR): Project name
 - **description** (TEXT): Project description
 - **project_type** (VARCHAR): Software, Construction, R&D, Marketing
@@ -27,8 +27,8 @@
 
 ### risk_assessments
 - **id** (INT, PK): Assessment ID
-- **project_id** (INT, FK → projects.id): Associated project
-- **assessor_id** (INT, FK → users.id): User who created assessment
+- **project_id** (INT, FK ? projects.id): Associated project
+- **assessor_id** (INT, FK ? users.id): User who created assessment
 - **probability** (INT): Risk probability 0-100
 - **risk_level** (VARCHAR): Low, Medium, High
 - **assessment_method** (VARCHAR): Manual or Predictive Scan
@@ -43,7 +43,7 @@
 
 ### url_scan_results
 - **id** (INT, PK): Scan result ID
-- **project_id** (INT, FK → projects.id, NULL): Associated project (optional)
+- **project_id** (INT, FK ? projects.id, NULL): Associated project (optional)
 - **url** (VARCHAR): Repository/project URL
 - **repository_type** (VARCHAR): GitHub, GitLab, Bitbucket, etc.
 - **project_category** (VARCHAR): Software, Research, Construction

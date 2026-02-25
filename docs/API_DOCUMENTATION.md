@@ -362,7 +362,7 @@ None (uses authenticated user's projects)
 ```
 
 **Metrics Explained:**
-- `risk_volatility`: Standard deviation of risk scores (σ)
+- `risk_volatility`: Standard deviation of risk scores (?)
 - `factor_analysis`: Which risk factors impact the portfolio most
 - `recent_trends`: Historical risk trajectory
 

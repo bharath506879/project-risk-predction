@@ -140,19 +140,19 @@ ENABLE_MONITORING=true
 
 ### Architecture Overview
 ```
-Internet → AWS Route 53 (DNS)
-         ↓
+Internet ? AWS Route 53 (DNS)
+         ?
        ALB (Application Load Balancer)
-         ↓
-    ┌────┴────┐
-    ↓         ↓
+         ?
+    ???????????
+    ?         ?
    ECS       ECS
  Backend   Frontend
-    ↓         ↓
-    └────┬────┘
-         ↓
+    ?         ?
+    ???????????
+         ?
       RDS PostgreSQL
-         ↓
+         ?
       EC2 (Bastion)
 ```
 
@@ -335,7 +335,7 @@ git push origin main
 
 **Backend Service:**
 1. Go to render.com
-2. New → Web Service
+2. New ? Web Service
 3. Connect GitHub repo
 4. Configure:
    - Build Command: `pip install -r backend/requirements.txt`
@@ -347,22 +347,22 @@ git push origin main
      - `DEBUG`: false
 
 **Frontend Service:**
-1. New → Static Site
+1. New ? Static Site
 2. Connect GitHub repo
 3. Configure:
    - Build Command: `cd frontend && npm install && npm run build`
    - Publish Directory: `frontend/dist`
 
 **Database:**
-1. New → PostgreSQL
+1. New ? PostgreSQL
 2. Set credentials
 3. Get connection string for backend environment variables
 
 ### Step 3: Set up custom domain
 
-1. Render Dashboard → Services
-2. Select service → Settings
-3. Custom Domain → Add domain
+1. Render Dashboard ? Services
+2. Select service ? Settings
+3. Custom Domain ? Add domain
 4. Update DNS with Render's nameservers
 
 ---
@@ -395,8 +395,8 @@ aws cloudwatch put-dashboard \
 ### Slack Alerts
 
 In Grafana:
-1. Alerting → Notification Channels
-2. Add → Slack
+1. Alerting ? Notification Channels
+2. Add ? Slack
 3. Paste Slack webhook URL
 4. Configure alert rules to use Slack channel
 
@@ -467,7 +467,7 @@ curl http://localhost:8000/metrics
 ```
 
 **Grafana datasource error**
-1. Grafana → Configuration → Data Sources
+1. Grafana ? Configuration ? Data Sources
 2. Test Prometheus connection
 3. Check Prometheus is running: `docker-compose ps prometheus`
 
@@ -518,7 +518,7 @@ terraform destroy
 ```
 
 ### Render
-1. Dashboard → Deployments
+1. Dashboard ? Deployments
 2. Select previous deployment
 3. Click "Redeploy"
 

@@ -3,7 +3,7 @@
 
 set -e
 
-echo "🗄️  Creating PostgreSQL database and tables..."
+echo "???  Creating PostgreSQL database and tables..."
 
 # Create Docker network
 docker network create riskguard-network 2>/dev/null || true
@@ -19,10 +19,10 @@ docker run -d \
   -p 5432:5432 \
   postgres:15-alpine
 
-echo "⏳  Waiting for PostgreSQL to be ready..."
+echo "?  Waiting for PostgreSQL to be ready..."
 sleep 10
 
 # Run migrations
 python -m alembic upgrade head
 
-echo "✅ Database initialized successfully!"
+echo "? Database initialized successfully!"

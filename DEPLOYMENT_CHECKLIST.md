@@ -463,7 +463,7 @@ git push -u origin main
 # RENDER_API_KEY = your render API key
 ```
 
-- [ ] Navigate to Settings → Secrets and variables → Actions
+- [ ] Navigate to Settings ? Secrets and variables ? Actions
 - [ ] Add DOCKER_USERNAME
 - [ ] Add DOCKER_PASSWORD
 - [ ] Add RENDER_API_KEY
@@ -884,7 +884,7 @@ Before marking as "Production Ready":
 - [ ] All API endpoints tested and working
 - [ ] Database migrations completed
 - [ ] Frontend loads without errors
-- [ ] Authentication flow working (register → login → authenticated requests)
+- [ ] Authentication flow working (register ? login ? authenticated requests)
 - [ ] Risk assessment engine producing results
 - [ ] Analytics endpoints returning data
 - [ ] Prometheus collecting metrics
@@ -901,7 +901,7 @@ Before marking as "Production Ready":
 - [ ] Team trained on deployment and operations
 - [ ] Incident response plan ready
 
-**Status: Ready for production deployment ✅**
+**Status: Ready for production deployment ?**
 
 ---
 
@@ -922,4 +922,4 @@ After deployment, track these metrics:
 
 ---
 
-**Congratulations! Your RiskGuard deployment is complete! 🎉**
+**Congratulations! Your RiskGuard deployment is complete! ??**

@@ -29,17 +29,17 @@ request_duration = Histogram(
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """Startup and shutdown events"""
-    logger.info("🚀 RiskGuard API starting...")
+    logger.info("?? RiskGuard API starting...")
     try:
         await init_db()
-        logger.info("✅ Database initialized successfully")
+        logger.info("? Database initialized successfully")
     except Exception as e:
-        logger.error(f"❌ Database initialization failed: {e}")
+        logger.error(f"? Database initialization failed: {e}")
         raise
     
     yield
     
-    logger.info("🛑 RiskGuard API shutting down...")
+    logger.info("?? RiskGuard API shutting down...")
 
 # Create FastAPI app
 app = FastAPI(
