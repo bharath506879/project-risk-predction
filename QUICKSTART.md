@@ -1,6 +1,6 @@
 # RiskGuard AI - Quick Start & Project Summary
 
-## ?? Project Overview
+## 📊 Project Overview
 
 **RiskGuard AI** is a production-grade **full-stack risk assessment and predictive analytics platform** demonstrating enterprise DevOps architecture.
 
@@ -16,19 +16,19 @@
 ### Architecture Highlights
 ```
 React Frontend (Port 3000)
-         ?
+         ↓
     Nginx Proxy (Port 80)
-         ?
+         ↓
    FastAPI Backend (Port 8000)
-         ?
+         ↓
    PostgreSQL (Port 5432)
-         ?
+         ↓
 Prometheus/Grafana Monitoring (Ports 9090, 3001)
 ```
 
 ---
 
-## ?? 5-Minute Quick Start
+## 🚀 5-Minute Quick Start
 
 ### Prerequisites
 ```bash
@@ -100,70 +100,70 @@ curl -X GET http://localhost:8000/api/v1/projects \
 
 ---
 
-## ?? Project Structure Summary
+## 📁 Project Structure Summary
 
 ```
 riskguard/
-?
-??? .github/workflows/          ? GitHub Actions CI/CD
-?   ??? deploy.yml              
-?
-??? backend/                    ? FastAPI Application
-?   ??? app/
-?   ?   ??? controllers/        ? HTTP endpoints
-?   ?   ??? services/           ? Business logic
-?   ?   ??? models/             ? SQLAlchemy ORM
-?   ?   ??? schemas/            ? Pydantic validation
-?   ?   ??? database/           ? DB connection
-?   ?   ??? main.py             ? FastAPI app entry
-?   ??? migrations/             ? Alembic DB migrations
-?   ??? tests/                  ? Unit tests
-?   ??? requirements.txt        ? Python dependencies
-?   ??? .env.example            
-?
-??? frontend/                   ? React Application
-?   ??? src/
-?   ?   ??? components/         ? React components
-?   ?   ??? pages/              ? Page layouts
-?   ?   ??? services/           ? API client
-?   ?   ??? context/            ? Zustand stores
-?   ?   ??? main.tsx            ? Entry point
-?   ??? package.json            
-?   ??? vite.config.ts          
-?   ??? tsconfig.json           
-?   ??? tailwind.config.js      
-?
-??? docker/                     ? Docker configurations
-?   ??? Dockerfile.backend      
-?   ??? Dockerfile.frontend     
-?
-??? infrastructure/            ? Production resources
-?   ??? terraform/              ? AWS IaC
-?   ?   ??? main.tf             ? VPC, RDS, ECS, ALB
-?   ?   ??? variables.tf        
-?   ??? nginx/                  ? Reverse proxy
-?       ??? nginx.conf          
-?       ??? default.conf        
-?
-??? monitoring/                ? Observability
-?   ??? prometheus.yml          ? Metrics config
-?   ??? alert_rules.yml         ? Alert rules
-?   ??? grafana_datasources.yml 
-?
-??? docs/                      ? Documentation
-?   ??? README.md               ? Main guide
-?   ??? API_DOCUMENTATION.md    ? API reference
-?   ??? DATABASE_SCHEMA.md      ? DB design
-?   ??? DEPLOYMENT_GUIDE.md     ? Deployment steps
-?   ??? DEVOPS_CONCEPTS.md      ? DevOps explained
-?
-??? docker-compose.yml         ? Local environment
-??? .gitignore
+│
+├── .github/workflows/          ← GitHub Actions CI/CD
+│   └── deploy.yml              
+│
+├── backend/                    ← FastAPI Application
+│   ├── app/
+│   │   ├── controllers/        ← HTTP endpoints
+│   │   ├── services/           ← Business logic
+│   │   ├── models/             ← SQLAlchemy ORM
+│   │   ├── schemas/            ← Pydantic validation
+│   │   ├── database/           ← DB connection
+│   │   └── main.py             ← FastAPI app entry
+│   ├── migrations/             ← Alembic DB migrations
+│   ├── tests/                  ← Unit tests
+│   ├── requirements.txt        ← Python dependencies
+│   └── .env.example            
+│
+├── frontend/                   ← React Application
+│   ├── src/
+│   │   ├── components/         ← React components
+│   │   ├── pages/              ← Page layouts
+│   │   ├── services/           ← API client
+│   │   ├── context/            ← Zustand stores
+│   │   └── main.tsx            ← Entry point
+│   ├── package.json            
+│   ├── vite.config.ts          
+│   ├── tsconfig.json           
+│   └── tailwind.config.js      
+│
+├── docker/                     ← Docker configurations
+│   ├── Dockerfile.backend      
+│   └── Dockerfile.frontend     
+│
+├── infrastructure/            ← Production resources
+│   ├── terraform/              ← AWS IaC
+│   │   ├── main.tf             ← VPC, RDS, ECS, ALB
+│   │   └── variables.tf        
+│   └── nginx/                  ← Reverse proxy
+│       ├── nginx.conf          
+│       └── default.conf        
+│
+├── monitoring/                ← Observability
+│   ├── prometheus.yml          ← Metrics config
+│   ├── alert_rules.yml         ← Alert rules
+│   └── grafana_datasources.yml 
+│
+├── docs/                      ← Documentation
+│   ├── README.md               ← Main guide
+│   ├── API_DOCUMENTATION.md    ← API reference
+│   ├── DATABASE_SCHEMA.md      ← DB design
+│   ├── DEPLOYMENT_GUIDE.md     ← Deployment steps
+│   └── DEVOPS_CONCEPTS.md      ← DevOps explained
+│
+├── docker-compose.yml         ← Local environment
+└── .gitignore
 ```
 
 ---
 
-## ??? Technology Stack
+## 🛠️ Technology Stack
 
 ### Frontend Layer
 | Technology | Purpose |
@@ -204,7 +204,7 @@ riskguard/
 
 ---
 
-## ?? Database Schema at a Glance
+## 💾 Database Schema at a Glance
 
 ### Tables
 
@@ -230,15 +230,15 @@ id | url | documentation_quality | maturity_stage | calculated_risk
 
 ### Relationships
 ```
-User (1) ? (Many) Projects
-User (1) ? (Many) RiskAssessments
-Project (1) ? (Many) RiskAssessments
-Project (1) ? (Many) URLScanResults
+User (1) → (Many) Projects
+User (1) → (Many) RiskAssessments
+Project (1) → (Many) RiskAssessments
+Project (1) → (Many) URLScanResults
 ```
 
 ---
 
-## ?? API Endpoints Reference
+## 📡 API Endpoints Reference
 
 ### Authentication
 - `POST /api/v1/auth/register` - Create account
@@ -266,48 +266,48 @@ Project (1) ? (Many) URLScanResults
 
 ---
 
-## ?? CI/CD Pipeline Flow
+## 🔄 CI/CD Pipeline Flow
 
 ```
 Developer Push
-    ?
+    ↓
 Git Webhook
-    ?
+    ↓
 GitHub Actions Triggered
-    ?? Backend Tests (pytest)
-    ?? Frontend Tests (npm test)
-    ?? Linting (flake8, eslint)
-    ?? Build check
-         ?
+    ├─ Backend Tests (pytest)
+    ├─ Frontend Tests (npm test)
+    ├─ Linting (flake8, eslint)
+    └─ Build check
+         ↓
 All tests pass?
-    ?? YES ? Build Docker images
-    ?        ?
-    ?        Push to Docker Hub/ECR
-    ?        ?
-    ?        Deploy to Staging (develop branch)
-    ?        OR
-    ?        Deploy to Production (main branch)
-    ?
-    ?? NO ? Block deployment, notify developer
+    ├─ YES → Build Docker images
+    │        ↓
+    │        Push to Docker Hub/ECR
+    │        ↓
+    │        Deploy to Staging (develop branch)
+    │        OR
+    │        Deploy to Production (main branch)
+    │
+    └─ NO → Block deployment, notify developer
 ```
 
 ---
 
-## ?? Security Features
+## 🔐 Security Features
 
-- ? **JWT Authentication** - Token-based access control
-- ? **Password Hashing** - Bcrypt with salt
-- ? **HTTPS/TLS** - Encrypted transport
-- ? **CORS Headers** - Cross-origin protection
-- ? **Input Validation** - Pydantic schemas
-- ? **SQL Injection Prevention** - Parameterized queries
-- ? **Security Headers** - X-Frame-Options, CSP, etc.
-- ? **VPC Isolation** - Private database subnet
-- ? **Secrets Management** - Environment variables + AWS Secrets Manager
+- ✅ **JWT Authentication** - Token-based access control
+- ✅ **Password Hashing** - Bcrypt with salt
+- ✅ **HTTPS/TLS** - Encrypted transport
+- ✅ **CORS Headers** - Cross-origin protection
+- ✅ **Input Validation** - Pydantic schemas
+- ✅ **SQL Injection Prevention** - Parameterized queries
+- ✅ **Security Headers** - X-Frame-Options, CSP, etc.
+- ✅ **VPC Isolation** - Private database subnet
+- ✅ **Secrets Management** - Environment variables + AWS Secrets Manager
 
 ---
 
-## ?? Monitoring Dashboard Example
+## 📊 Monitoring Dashboard Example
 
 ### Key Metrics Tracked
 - **Request Volume**: HTTP requests/sec
@@ -326,7 +326,7 @@ All tests pass?
 
 ---
 
-## ?? Deployment Paths
+## 🚢 Deployment Paths
 
 ### Option 1: Local Development (5 min)
 ```bash
@@ -368,7 +368,7 @@ terraform apply -var-file="prod.tfvars"
 
 ---
 
-## ?? Common Commands
+## 🔧 Common Commands
 
 ### Development
 ```bash
@@ -415,7 +415,7 @@ terraform destroy
 
 ---
 
-## ?? Documentation Files
+## 📚 Documentation Files
 
 | File | Content |
 |------|---------|
@@ -427,28 +427,28 @@ terraform destroy
 
 ---
 
-## ?? Learning Outcomes
+## 🎓 Learning Outcomes
 
 After studying this project, you will understand:
 
-? **Full-Stack Development**
+✅ **Full-Stack Development**
 - Frontend: Modern React with TypeScript
 - Backend: FastAPI async architecture
 - Database: PostgreSQL with ORM patterns
 
-? **DevOps Practices**
+✅ **DevOps Practices**
 - Containerization with Docker
 - Orchestration with Docker Compose
 - Infrastructure as Code with Terraform
 - CI/CD pipelines with GitHub Actions
 
-? **Production Practices**
+✅ **Production Practices**
 - Monitoring & alerting
 - Security best practices
 - Scalability patterns
 - Disaster recovery
 
-? **Cloud Deployment**
+✅ **Cloud Deployment**
 - AWS VPC, RDS, ECS, ALB, S3
 - Blue-green deployments
 - Auto-scaling setup
@@ -456,7 +456,7 @@ After studying this project, you will understand:
 
 ---
 
-## ?? Contributing
+## 🤝 Contributing
 
 1. Create a feature branch: `git checkout -b feature/name`
 2. Commit changes: `git commit -m "Add feature"`
@@ -467,7 +467,7 @@ After studying this project, you will understand:
 
 ---
 
-## ?? Scaling Checklist
+## 📈 Scaling Checklist
 
 - [ ] Horizontal scaling setup (load balancer)
 - [ ] Database read replicas configured
@@ -480,7 +480,7 @@ After studying this project, you will understand:
 
 ---
 
-## ?? Troubleshooting Quick Links
+## 🆘 Troubleshooting Quick Links
 
 | Issue | Solution |
 |-------|----------|
@@ -492,7 +492,7 @@ After studying this project, you will understand:
 
 ---
 
-## ?? Support Resources
+## 📞 Support Resources
 
 - **Docker Docs**: https://docs.docker.com
 - **FastAPI Docs**: https://fastapi.tiangolo.com
@@ -503,7 +503,7 @@ After studying this project, you will understand:
 
 ---
 
-## ?? Project Timeline (If Starting from Scratch)
+## 📅 Project Timeline (If Starting from Scratch)
 
 - **Week 1**: Backend setup (FastAPI, models, schemas)
 - **Week 2**: Frontend setup (React, API client, state)
@@ -516,7 +516,7 @@ After studying this project, you will understand:
 
 ---
 
-## ?? Key Performance Indicators
+## 🎯 Key Performance Indicators
 
 | Metric | Target |
 |--------|--------|
@@ -525,11 +525,11 @@ After studying this project, you will understand:
 | Error Rate | < 0.1% |
 | Uptime | 99.95% |
 | Deployment Frequency | Daily |
-| Lead Time (Dev ? Prod) | < 2 hours |
+| Lead Time (Dev → Prod) | < 2 hours |
 
 ---
 
-## ?? License
+## 📝 License
 
 MIT License - Free for educational and professional use
 
@@ -537,7 +537,7 @@ MIT License - Free for educational and professional use
 
 **Last Updated**: February 2024
 **Version**: 1.0.0
-**Status**: Production Ready ?
+**Status**: Production Ready ✅
 
 ---
 
@@ -551,4 +551,4 @@ MIT License - Free for educational and professional use
 6. **Deploy it** - Try one of the deployment options
 7. **Extend it** - Add new features!
 
-**Happy coding! ??**
+**Happy coding! 🚀**
